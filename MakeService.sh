@@ -2,7 +2,7 @@
 
 if [[ $1 == "--help" ]]
 then
-  echo "MakeService.sh - Version: 1.1"
+  echo "MakeService.sh - Version: 1.2"
   echo ""
   echo "To create a service run the script without specifying anything. You will be asked to specify things..."
   echo "To remove a service run the script with --cleanup option and specify the service name as argument."
@@ -16,7 +16,7 @@ then
   exit
 fi
 
-if [[ -z $(grep "/lib/systemd" "/sbin/init") ]]
+if [[ $(ps -p 1 -o comm=) != "systemd" ]]
 then
   echo "Error: This script can not create a service... Your system is not compatible!"
   exit
